@@ -2,7 +2,7 @@ from django.contrib import admin
 
 from django.contrib import admin
 from django.urls import path,include
-from Todoapp.views import home,login,signup,add_todo,signout,delete_todo,change_todo
+from .views import home,login,signup,add_todo,signout,delete_todo,change_todo
 from . import views
 
 urlpatterns = [
