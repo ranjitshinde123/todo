@@ -35,7 +35,7 @@ def login(request):
            if user is not None:
                loginuser(request,user)
                return redirect("home")
-
+               print(user)
        else:
            context = {
                "form": form
