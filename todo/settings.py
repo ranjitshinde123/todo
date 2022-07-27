@@ -25,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-fxp@ye9!0*t$3_-0q3ka+#i+^aqu%#2^%3r#!u*b=k2o!x)yv5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ["todoapc.herokuapp.com","localhost"]
+ALLOWED_HOSTS = ["todoapc.herokuapp.com","localhost","127.0.0.1"]
 
 
 # Application definition
@@ -133,7 +133,7 @@ STATIC_ROOT=BASE_DIR / 'static'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
