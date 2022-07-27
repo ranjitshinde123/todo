@@ -6,7 +6,7 @@ from .views import home,login,signup,add_todo,signout,delete_todo,change_todo
 from . import views
 
 urlpatterns = [
-    path('home/',home,name='home'),
+    path('',home,name='home'),
     path('login/',login,name='login'),
     path('signup/',signup),
     path('add_todo/',add_todo),
