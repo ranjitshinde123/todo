@@ -35,7 +35,7 @@ def login(request):
            if user is not None:
                loginuser(request,user)
                return render(request,"index.html")
-               print(user)
+
        else:
            context = {
                "form": form
@@ -61,7 +61,7 @@ def signup(request):
            user= form.save()
            print(user)
            if user is not None:
-               return render(request,'login.html')
+               return redirect('login')
 
         else:
             return render(request, 'signup.html', context=context)
@@ -77,19 +77,19 @@ def add_todo(request):
             todo.user=user
             todo.save()
             print(todo)
-            return render(request,"home")
+            return redirect("home")
         else:
             return render(request,'index.html',context={'form':form})
 
 def signout(request):
     logout(request)
-    return render(request,'login.html')
+    return redirect('login')
 
 def delete_todo(request ,id):
     print(id)
     TODO.objects.get(pk = id).delete()
     #return render(request, 'home')
-    return render(request,'index.html')
+    return redirect('home')
 
 
 
@@ -98,4 +98,4 @@ def change_todo(request, id, status):
     todo.status = status
     todo.save()
     #return render(request, 'home')
-    return render(request,'home')
+    return redirect('home')
