@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login as loginuser,logout
 from .forms import TODOForm
 from .models import TODO
 from django.contrib.auth.decorators import login_required
-@login_required(login_url='login')
+# @login_required(login_url='login')
 
 
 
@@ -66,7 +66,7 @@ def signup(request):
         else:
             return render(request, 'signup.html', context=context)
 
-@login_required(login_url='login')
+# @login_required(login_url='login')
 def add_todo(request):
     if request.user.is_authenticated:
         user=request.user
@@ -88,7 +88,7 @@ def signout(request):
 def delete_todo(request ,id):
     print(id)
     TODO.objects.get(pk = id).delete()
-    #return render(request, 'home')
+    #return render(request, 'index.html')
     return redirect('home')
 
 
