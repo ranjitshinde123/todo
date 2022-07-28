@@ -8,9 +8,9 @@ from . import views
 urlpatterns = [
     path('',home,name='home'),
     path('/login/',login,name='login'),
-    path('/signup/',signup),
-    path('/add_todo/',add_todo),
-    path('/delete_todo/<int:id>',delete_todo),
-    path('/change_status/<int:id>/<str:status>',change_todo),
-    path('/logout', signout),
+    path('signup/',signup),
+    path('add_todo/',add_todo),
+    path('delete_todo/<int:id>',delete_todo),
+    path('change_status/<int:id>/<str:status>',change_todo),
+    path('logout', signout),
  ]
