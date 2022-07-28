@@ -24,7 +24,7 @@ def login(request):
        context = {
            "form": form
        }
-       return render(request, 'login.html', context=context)
+       return render(request, '/login.html', context=context)
    else:
        form = AuthenticationForm(data=request.POST)
        print(form.is_valid())
