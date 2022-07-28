@@ -12,5 +12,5 @@ urlpatterns = [
     path('add_todo/',add_todo),
     path('delete_todo/<int:id>',delete_todo),
     path('change_status/<int:id>/<str:status>',change_todo),
-    path('logout', signout),
+    path('logout/', signout),
  ]
