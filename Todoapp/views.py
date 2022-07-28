@@ -15,7 +15,7 @@ def home(request):
         user=request.user
         form = TODOForm
         todos=TODO.objects.filter(user=user).order_by('priority')
-        return render(request,'/index.html',context={'form':form ,'todos':todos})
+        return render(request,'index.html',context={'form':form ,'todos':todos})
 
 def login(request):
 
@@ -24,7 +24,7 @@ def login(request):
        context = {
            "form": form
        }
-       return render(request, '/login.html', context=context)
+       return render(request, 'login.html', context=context)
    else:
        form = AuthenticationForm(data=request.POST)
        print(form.is_valid())
@@ -40,7 +40,7 @@ def login(request):
            context = {
                "form": form
            }
-           return render(request, '/login.html', context=context)
+           return render(request, 'login.html', context=context)
 
 
 
@@ -50,7 +50,7 @@ def signup(request):
         context = {
             'form': form
         }
-        return render(request, '/signup.html', context=context)
+        return render(request, 'signup.html', context=context)
     else:
         print(request.POST)
         form = UserCreationForm(request.POST)
@@ -64,7 +64,7 @@ def signup(request):
                return redirect('login')
 
         else:
-            return render(request, '/signup.html', context=context)
+            return render(request, 'signup.html', context=context)
 
 @login_required(login_url='login')
 def add_todo(request):
@@ -79,7 +79,7 @@ def add_todo(request):
             print(todo)
             return redirect("home")
         else:
-            return render(request,'/index.html',context={'form':form})
+            return render(request,'index.html',context={'form':form})
 
 def signout(request):
     logout(request)
