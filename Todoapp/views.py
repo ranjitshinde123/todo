@@ -34,7 +34,8 @@ def login(request):
            user= authenticate(username=username, password=password)
            if user is not None:
                loginuser(request,user)
-               return redirect('home')
+               # return redirect('home')
+               return render(request,'index.html')
 
        else:
            context = {
