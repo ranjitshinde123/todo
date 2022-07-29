@@ -15,7 +15,7 @@ def home(request):
         user=request.user
         form = TODOForm
         todos=TODO.objects.filter(user=user).order_by('priority')
-        return render(request,'base.html',context={'form':form ,'todos':todos})
+        return render(request,'index.html',context={'form':form ,'todos':todos})
 
 def login(request):
 
@@ -35,7 +35,7 @@ def login(request):
            if user is not None:
                loginuser(request,user)
                return redirect('home')
-               # return render(request,'index.html')
+           return render(request,'index.html')
 
        else:
            context = {
