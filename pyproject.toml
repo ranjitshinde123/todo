@@ -4,7 +4,3 @@ optional = true
 
 [tool.poetry.group.new_group.dependencies]
 tensorflow = "*"
-name=""
-version=""
-description=""
-authors=""
