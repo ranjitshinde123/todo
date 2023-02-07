@@ -20,7 +20,7 @@ class TODO(models.Model):
         ('10','🔟'),
     ]
     title = models.CharField(max_length=50)
-    status = models.CharField(max_length=2,choices=status_choices)
+    status = models.CharField(max_length=20,choices=status_choices)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     priority = models.CharField(max_length=2,choices=priority_choices)
