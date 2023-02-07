@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-fxp@ye9!0*t$3_-0q3ka+#i+^aqu%#2^%3r#!u*b=k2o!x)yv5
 DEBUG = False
 ALLOWED_HOSTS =['*']
 CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app','https://*.127.0.0.1/']
-# ALLOWED_HOSTS = ["todoapc.herokuapp.com","localhost",'127.0.0.1']
+
 
 
 
