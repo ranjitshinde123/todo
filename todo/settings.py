@@ -28,13 +28,15 @@ SECRET_KEY = 'django-insecure-fxp@ye9!0*t$3_-0q3ka+#i+^aqu%#2^%3r#!u*b=k2o!x)yv5
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 #  SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
-ALLOWED_HOSTS =['*']
+DEBUG = 'RENDER' not in os.environ
+ALLOWED_HOSTS =[]
 # ALLOWED_HOSTS = []
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-# if RENDER_EXTERNAL_HOSTNAME:    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 # CSRF_TRUSTED_ORIGINS = ['https://*.up.railway.app','https://*.127.0.0.1/']
+
 
 
 
@@ -147,16 +149,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-
-STATIC_URL = 'static/'
+if 'RENDER' in os.environ:
+    STATIC_URL = 'static/'
 # STATIC_ROOT=BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # django_heroku.settings(locals())
