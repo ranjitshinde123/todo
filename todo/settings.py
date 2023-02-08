@@ -14,22 +14,20 @@ import os
 
 import dj_database_url
 from pathlib import Path
+from dotenv import load_dotenv
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+load_dotenv(BASE_DIR / '.env')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fxp@ye9!0*t$3_-0q3ka+#i+^aqu%#2^%3r#!u*b=k2o!x)yv5'
+SDEBUG = os.getenv('DEBUG', '0').lower() in ['true', 't', '1']
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-#  SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = 'RENDER' not in os.environ
-ALLOWED_HOSTS =[]
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(' ')
 # ALLOWED_HOSTS = []
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -105,8 +103,8 @@ WSGI_APPLICATION = 'todo.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql://user99:Tiger@123@localhost:5432/mydatabase', conn_max_age=600)}
-
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'), conn_max_age=600),
+}
 # DATABASES ={
 #     "default": dj_database_url.parse(os.environ.get("DATABASE_URL"))
 #
@@ -149,16 +147,16 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
-if 'RENDER' in os.environ:
-    STATIC_URL = 'static/'
+# if 'RENDER' in os.environ:
+#     STATIC_URL = 'static/'
 # STATIC_ROOT=BASE_DIR / 'static'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
-    DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # django_heroku.settings(locals())
